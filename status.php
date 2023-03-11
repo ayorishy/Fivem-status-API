@@ -7,11 +7,9 @@ $server_settings['ip'] = "localhost"; /*  服务器IP */
 $server_settings['port'] = "30120"; /*  服务器端口 */
 $server_settings['max_slots'] = 64;/*  服务器最大人数 */
 
-/* ------------------------------------------------------------ */
-
-$content = json_decode(file_get_contents("http://".$server_settings['ip'].":".$server_settings['port']."/info.json"), true);
+$content = json_decode(file_get_contents("http://".$server_settings['ip'].":".$server_settings['port']."/info.json"), true);  /*  检测服务器状态 */
 if($content):
-    $fivem_players = file_get_contents("http://".$server_settings['ip'].":".$server_settings['port']."/players.json");
+    $fivem_players = file_get_contents("http://".$server_settings['ip'].":".$server_settings['port']."/players.json");  /*  检测完毕,读取服务器人数 */
     $content = json_decode($fivem_players, true);
     $player_count = count($content);
     $SERVER_STATUS = "<font style='color: green;'>在线</font>";  
